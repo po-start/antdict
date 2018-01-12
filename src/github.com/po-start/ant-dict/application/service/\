@@ -1,0 +1,54 @@
+package service
+
+import (
+	"fmt"
+	"encoding/json"
+	"github.com/po-start/ant-dict/core/db/mysql"
+
+//	"github.com/po-start/ant-dict/application/entity"
+)
+
+type DictService struct{}
+/*
+func ( d *DictService ) Search ( key string ) interface{} {
+
+
+
+	var data []map[string]interface{}
+	if err := json.Unmarshal(responseData, &data); err != nil {
+		fmt.Prentln(err.Error())
+	}
+	return data
+}
+*/
+
+func (d *DictService) Search (key string) interface{} {
+	data := make([]map[string]interface{}, 0, 1)
+	t := make(map[string]interface{})
+	t["b"] = "ttt"
+	t["ss"] = 123123
+//	t["bs"] = mysql.TT()
+
+a := mysql.TT().([]map[string]string)
+
+for _, v := range a {
+//	fmt.Printf("key: %d, v:%s \n", key, v)
+
+        var dataaa i[]map[string]interface{}     
+        if err := json.Unmarshal([]byte(v.([]map[string]string)), &dataaa); err != nil {
+            fmt.Println(err.Error())
+        }   
+	
+		data = append(data, dataaa)
+
+	//for k, value := range v {
+	//	fmt.Printf("------ key: %s, v: $s\n", k, value)
+	//}
+}
+
+data = append(data, t)
+data = append(data, t)
+data = append(data, t)
+	return data
+}
+

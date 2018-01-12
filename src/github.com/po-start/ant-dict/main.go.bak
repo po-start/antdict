@@ -1,0 +1,877 @@
+package main
+
+import (
+	"fmt"
+	"encoding/json"
+
+	"github.com/po-start/ant-dict/application/entity"
+)
+
+func main() {
+//	entity.Dict{}
+
+
+	ttt := `{
+    "item": "foot",
+    "translation": [
+        {
+            "pos": "n.",
+            "v": "脚；英尺；最底部；音步"
+        },
+        {
+            "pos": "v.",
+            "v": "表演舞步；步行；付账；踏；共计"
+        }
+    ],
+    "pronunciation": {
+        "BrE": {
+            "symbol": "fʊt",
+            "url": "http://audio.dict.cn/fbTd30sFc175c3cd84392e73672a5521dba1d961.mp3?t=foot"
+        },
+        "AmE": {
+            "symbol": "fʊt",
+            "url": "http://audio.dict.cn/fuk0sF8a329a7070b04ccf6e822f8a0a41f0f7.mp3?t=foot"
+        }
+    },
+    "chart_senses": {
+        "1": {
+            "percent": 77,
+            "sense": "脚"
+        },
+        "2": {
+            "percent": 9,
+            "sense": "踏"
+        },
+        "3": {
+            "percent": 6,
+            "sense": "英尺"
+        },
+        "4": {
+            "percent": 3,
+            "sense": "步行"
+        },
+        "5": {
+            "percent": 2,
+            "sense": "付账"
+        },
+        "6": {
+            "percent": 1,
+            "sense": "音步"
+        },
+        "7": {
+            "percent": 1,
+            "sense": "共计"
+        },
+        "8": {
+            "percent": 1,
+            "sense": "表演舞步"
+        }
+    },
+    "sentence": [
+        {
+            "pos": "n.",
+            "v": [
+                {
+                    "text": "I apologized to her for stepping on her foot.",
+                    "trans": "我因踩了她一脚向她道歉。"
+                },
+                {
+                    "text": "I hurt my foot while playing football.",
+                    "trans": "在踢足球时,我的脚受伤了。"
+                },
+                {
+                    "text": "They sank the post two feet deep in the ground.",
+                    "trans": "他们把这根柱子在地下埋了两英尺深。"
+                },
+                {
+                    "text": "I missed the target by one foot.",
+                    "trans": "我差一英尺就击中目标。"
+                },
+                {
+                    "text": "The waves wash the foot of the cliffs.",
+                    "trans": "波浪拍打断崖底部。"
+                },
+                {
+                    "text": "They camped at the foot of the mountain.",
+                    "trans": "他们在山脚下露营。"
+                },
+                {
+                    "text": "He sat on the foot of the bed.",
+                    "trans": "他坐在床脚处。"
+                }
+            ]
+        },
+        {
+            "pos": "v.",
+            "v": [
+                {
+                    "text": "We foot it all the night.",
+                    "trans": "我们跳了一整夜的舞。"
+                },
+                {
+                    "text": "We have missed the last bus,so we'll have to foot it.",
+                    "trans": "我们没有赶上最后一班公共汽车，只有步行了。"
+                },
+                {
+                    "text": "We decided to foot it over to the convenience store.",
+                    "trans": "我们决定步行去便利店。"
+                },
+                {
+                    "text": "I suppose Jim will foot the bill as usual.",
+                    "trans": "我想吉姆会像往常一样付账的。"
+                },
+                {
+                    "text": "Let me foot the bill,if you don't mind.",
+                    "trans": "如果你不介意，就让我付账吧。"
+                },
+                {
+                    "text": "He wildly stamped the chair with his foot.",
+                    "trans": "他粗野地把一只脚踏在椅子上。"
+                },
+                {
+                    "text": "I stepped in a puddle and got my foot wet.",
+                    "trans": "我踏进一个小水潭，把脚弄湿了。"
+                },
+                {
+                    "text": "His debts foot up to a huge sum.",
+                    "trans": "他欠的债加起来是一笔巨款。"
+                },
+                {
+                    "text": "The expenses foot up to 50 dollars.",
+                    "trans": "费用共计50美元。"
+                }
+            ]
+        }
+    ],
+    "ophrase": [
+        {
+            "pos": "n.",
+            "v": [
+                {
+                    "phrase": "catch on the wrong foot",
+                    "details": {
+                        "explanation": "〈口〉使人措手不及 catch sb off balance",
+                        "more_details": [
+                            {
+                                "phrase": "catch sb on the wrong foot",
+                                "notes": [
+                                    "The boss caught me on the wrong foot when he asked where I was yesterday when I should have been at work.",
+                                    "老板问我昨天上班时间到哪里去了,这使我措手不及。"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "phrase": "dead on one's feet",
+                    "details": {
+                        "explanation": "〈俚〉疲惫不堪 exhausted"
+                    }
+                },
+                {
+                    "phrase": "drag one's feet",
+                    "details": {
+                        "explanation": "拖延不走,迟迟不行动; 故意拖拉 delay purposely"
+                    }
+                },
+                {
+                    "phrase": "feel one's feet",
+                    "details": {
+                        "explanation": "感到有把握或有信心 be sure about sth"
+                    }
+                },
+                {
+                    "phrase": "find one's feet",
+                    "details": {
+                        "explanation": "会走路; 适应新环境 be able to walk; be accustomed to new surrounding"
+                    }
+                },
+                {
+                    "phrase": "get a/one's foot in〔into〕 the door",
+                    "details": {
+                        "explanation": "〈口〉得到机会接受; 获得机会参加 gain acceptance〔admission〕 to an organization, etc."
+                    }
+                },
+                {
+                    "phrase": "have〔keep〕 a foot in both camps",
+                    "details": {
+                        "explanation": "脚踏两只船 deal with both parties in a dispute"
+                    }
+                },
+                {
+                    "phrase": "have one foot in the grave",
+                    "details": {
+                        "explanation": "一只脚踏进了坟墓,风烛残年 be very ill; be very old"
+                    }
+                },
+                {
+                    "phrase": "keep one's feet",
+                    "details": {
+                        "explanation": "站住不倒 remain upright"
+                    }
+                },
+                {
+                    "phrase": "keep one's feet clean of",
+                    "details": {
+                        "explanation": "不介入 not to take part in sth"
+                    }
+                },
+                {
+                    "phrase": "land〔fall〕 on one's feet",
+                    "details": {
+                        "explanation": "运气不错,化险为夷 have a good luck"
+                    }
+                },
+                {
+                    "phrase": "let grass grow under one's feet",
+                    "details": {
+                        "explanation": "懒惰,不做事 be lazy; do nothing"
+                    }
+                },
+                {
+                    "phrase": "my foot",
+                    "details": {
+                        "explanation": "〈俚〉算了吧,去你的吧 certainly not"
+                    }
+                },
+                {
+                    "phrase": "on foot",
+                    "details": {
+                        "explanation": "步行; 进行起来,在筹划中 walking; in the planning"
+                    }
+                },
+                {
+                    "phrase": "on one's feet",
+                    "details": {
+                        "explanation": "站着,站起来; 痊愈 standing; being cured"
+                    }
+                },
+                {
+                    "phrase": "put a foot wrong",
+                    "details": {
+                        "explanation": "做一件错事,说一句错话 make a mistake"
+                    }
+                },
+                {
+                    "phrase": "put one's best foot forward",
+                    "details": {
+                        "explanation": "〈口〉全力以赴 begin to do sth purposefully"
+                    }
+                },
+                {
+                    "phrase": "put one's foot down",
+                    "details": {
+                        "explanation": "坚持 insist"
+                    }
+                },
+                {
+                    "phrase": "set foot in〔on〕",
+                    "details": {
+                        "explanation": "进入; 踏上 enter〔go〕 somewhere (for the first time)"
+                    }
+                },
+                {
+                    "phrase": "stamp one's foot",
+                    "details": {
+                        "explanation": "气得直跺脚 display anger"
+                    }
+                },
+                {
+                    "phrase": "stand on one's own feet",
+                    "details": {
+                        "explanation": "〈非正〉不依赖他人,自立 be independent"
+                    }
+                },
+                {
+                    "phrase": "under foot",
+                    "details": {
+                        "explanation": "脚底下; 在(某人)权势下 at the foot of sb/sth; under sb's control"
+                    }
+                },
+                {
+                    "phrase": "under sb's foot〔feet〕",
+                    "details": {
+                        "explanation": "完全受某人控制 being totally controlled"
+                    }
+                }
+            ]
+        },
+        {
+            "pos": "v.",
+            "v": [
+                {
+                    "phrase": "foot up (v\\u002e+adv\\u002e)",
+                    "details": {
+                        "explanation": "结算 pay the cost",
+                        "more_details": [
+                            {
+                                "phrase": "foot sth ⇔ up",
+                                "notes": [
+                                    "The waiter footed up our bill.",
+                                    "服务员结算了我们的账单。"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "phrase": "foot up to (v\\u002e+adv\\u002e+prep\\u002e)",
+                    "details": {
+                        "explanation": "共计,加起来 add together",
+                        "more_details": [
+                            {
+                                "phrase": "foot up to sth",
+                                "notes": [
+                                    "The expenses foot up to 50 yuan .",
+                                    "费用共计五十元。",
+                                    "His debts foot up to a huge sum.",
+                                    "他欠的债加起来是一笔巨款。"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "vocabulary": [
+        {
+            "pos": "n.",
+            "v": [
+                {
+                    "explanation": "动词+～",
+                    "list": [
+                        {
+                            "en": "break one's foot",
+                            "cn": "弄伤脚"
+                        },
+                        {
+                            "en": "carry sb off his foot",
+                            "cn": "使某人极度兴奋"
+                        },
+                        {
+                            "en": "cut the foot to fit the shoe",
+                            "cn": "削足适履"
+                        },
+                        {
+                            "en": "fall on one's foot",
+                            "cn": "安然脱险,运气好"
+                        },
+                        {
+                            "en": "find one's foot",
+                            "cn": "开始能走路,能独立行动,适应新环境"
+                        },
+                        {
+                            "en": "get a foot in",
+                            "cn": "在…中找机会参加"
+                        },
+                        {
+                            "en": "get cold foot",
+                            "cn": "害怕,胆战心寒,临阵畏缩,畏缩不前"
+                        },
+                        {
+                            "en": "get to one's foot",
+                            "cn": "站起来"
+                        },
+                        {
+                            "en": "go on foot",
+                            "cn": "步行去"
+                        },
+                        {
+                            "en": "have cold foot",
+                            "cn": "害怕,胆战心寒,临阵畏缩,畏缩不前"
+                        },
+                        {
+                            "en": "have one foot in the grave",
+                            "cn": "已是风烛残年,离死不远"
+                        },
+                        {
+                            "en": "have two left foot",
+                            "cn": "极其拙笨"
+                        },
+                        {
+                            "en": "hurt one's foot",
+                            "cn": "弄伤脚"
+                        },
+                        {
+                            "en": "keep one's foot",
+                            "cn": "站住脚"
+                        },
+                        {
+                            "en": "land on one's foot",
+                            "cn": "运气不错,化险为夷"
+                        },
+                        {
+                            "en": "put a foot wrong",
+                            "cn": "做一件错事,说一句错话"
+                        },
+                        {
+                            "en": "put one's foot down",
+                            "cn": "坚决,坚定,行动果断,坚决反对,坚定不移地干"
+                        },
+                        {
+                            "en": "put one's foot in one's mouth",
+                            "cn": "说错话,做错事"
+                        },
+                        {
+                            "en": "put one's foot up",
+                            "cn": "双脚平搁起来休息"
+                        },
+                        {
+                            "en": "put one's best foot forward",
+                            "cn": "飞速地向前,全力以赴"
+                        },
+                        {
+                            "en": "rise to one's foot",
+                            "cn": "站起来"
+                        },
+                        {
+                            "en": "set foot",
+                            "cn": "踏上,进入"
+                        },
+                        {
+                            "en": "set foot on Chinese soil",
+                            "cn": "踏上中国国土"
+                        },
+                        {
+                            "en": "set on foot",
+                            "cn": "开始,发动"
+                        },
+                        {
+                            "en": "spring to one's foot",
+                            "cn": "跳着站起来"
+                        },
+                        {
+                            "en": "stand on one's own foot",
+                            "cn": "自力更生,自立"
+                        },
+                        {
+                            "en": "struggle to one's foot",
+                            "cn": "挣扎着站起来"
+                        },
+                        {
+                            "en": "sweep sb off his foot",
+                            "cn": "使某人大为激动"
+                        },
+                        {
+                            "en": "warm one's foot",
+                            "cn": "暖脚"
+                        },
+                        {
+                            "en": "wash one's foot",
+                            "cn": "洗脚"
+                        }
+                    ]
+                },
+                {
+                    "explanation": "形容词+～",
+                    "list": [
+                        {
+                            "en": "broken foot",
+                            "cn": "骨折的脚,受伤的脚"
+                        },
+                        {
+                            "en": "light foot",
+                            "cn": "脚步轻"
+                        },
+                        {
+                            "en": "naked foot",
+                            "cn": "赤脚,光脚"
+                        },
+                        {
+                            "en": "wounded foot",
+                            "cn": "受伤的脚"
+                        }
+                    ]
+                },
+                {
+                    "explanation": "名词+～",
+                    "list": [
+                        {
+                            "en": "club foot",
+                            "cn": "先天畸形足"
+                        }
+                    ]
+                },
+                {
+                    "explanation": "～+名词",
+                    "list": [
+                        {
+                            "en": "foot brake",
+                            "cn": "脚刹车"
+                        },
+                        {
+                            "en": "foot carrier",
+                            "cn": "步行邮递员"
+                        },
+                        {
+                            "en": "foot drop",
+                            "cn": "足下垂"
+                        },
+                        {
+                            "en": "foot's pace",
+                            "cn": "步行速度"
+                        }
+                    ]
+                },
+                {
+                    "explanation": "介词+～",
+                    "list": [
+                        {
+                            "en": "at the foot of",
+                            "cn": "在…下部,在…脚下"
+                        },
+                        {
+                            "en": "at the foot of page",
+                            "cn": "在一页的下端"
+                        },
+                        {
+                            "en": "at the foot of the grave",
+                            "cn": "墓脚下"
+                        },
+                        {
+                            "en": "at the foot of the hill",
+                            "cn": "山脚下"
+                        },
+                        {
+                            "en": "at the foot of the mountain",
+                            "cn": "山脚下"
+                        },
+                        {
+                            "en": "at the foot of the statue",
+                            "cn": "雕像脚下"
+                        },
+                        {
+                            "en": "at the foot of the table",
+                            "cn": "桌子脚下"
+                        },
+                        {
+                            "en": "beyond a few feet",
+                            "cn": "数英尺以外"
+                        },
+                        {
+                            "en": "from head to foot",
+                            "cn": "从头到脚"
+                        },
+                        {
+                            "en": "the pain in one's foot",
+                            "cn": "脚痛"
+                        },
+                        {
+                            "en": "on foot",
+                            "cn": "步行,在进行中"
+                        },
+                        {
+                            "en": "on one's foot",
+                            "cn": "站着,起立(回答等),痊愈,复原"
+                        },
+                        {
+                            "en": "set a plan on foot",
+                            "cn": "实施计划"
+                        },
+                        {
+                            "en": "under foot",
+                            "cn": "脚下"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "pos": "v.",
+            "v": [
+                {
+                    "explanation": "～+副词",
+                    "list": [
+                        {
+                            "en": "foot up",
+                            "cn": "把…加在一起,结算"
+                        },
+                        {
+                            "en": "foot up all items",
+                            "cn": "把各项加起来"
+                        },
+                        {
+                            "en": "foot up an account",
+                            "cn": "结算账目"
+                        },
+                        {
+                            "en": "foot up to",
+                            "cn": "加起来共"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "word_diff": [
+        {
+            "pos": "n.",
+            "v": [
+                {
+                    "items": "at the foot of, at the feet of",
+                    "notes": [
+                        "两者意思不同:at the foot of意为“在…的底部,在…的基部”; 而at the feet of的意思是“在某人脚下(或支配下)”“拜倒在…脚下”。例如:",
+                        "My native village stands at the foot of the mountain.我出生的那个小村庄坐落在山脚下。",
+                        "They fell down at the feet of their enemy.他们向敌人屈服了。"
+                    ]
+                },
+                {
+                    "items": "on foot, on one's feet",
+                    "notes": [
+                        "两者意思不同:on foot意思是“步行; 进行起来,在筹划中”,而on one's feet意思是“站着,站起来; 痊愈”。"
+                    ]
+                }
+            ]
+        }
+    ],
+    "synonym": [
+        {
+            "v": [
+                {
+                    "en": "base",
+                    "cn": "底部"
+                },
+                {
+                    "en": "foundation",
+                    "cn": "根基"
+                },
+                {
+                    "en": "walk",
+                    "cn": "步行"
+                },
+                {
+                    "en": "hike",
+                    "cn": "徒步旅行"
+                },
+                {
+                    "en": "hoof",
+                    "cn": " 蹄"
+                },
+                {
+                    "en": "sole",
+                    "cn": "独占的"
+                },
+                {
+                    "en": "kicker",
+                    "cn": "踢者"
+                },
+                {
+                    "en": "march",
+                    "cn": "行军"
+                },
+                {
+                    "en": "seat",
+                    "cn": "座位"
+                },
+                {
+                    "en": "part",
+                    "cn": "部分"
+                },
+                {
+                    "en": "hoof it",
+                    "cn": "步行"
+                },
+                {
+                    "en": "bottom",
+                    "cn": "底部"
+                },
+                {
+                    "en": "end",
+                    "cn": "结束"
+                },
+                {
+                    "en": "heel",
+                    "cn": "脚后跟"
+                },
+                {
+                    "en": "lowest",
+                    "cn": "最低的"
+                },
+                {
+                    "en": "of",
+                    "cn": "关于"
+                },
+                {
+                    "en": "body",
+                    "cn": "身体"
+                },
+                {
+                    "en": "it",
+                    "cn": "它"
+                },
+                {
+                    "en": "groundwork",
+                    "cn": "基础"
+                },
+                {
+                    "en": "pes",
+                    "cn": "[动物]足"
+                },
+                {
+                    "en": "foot up",
+                    "cn": "把 ... 加在一起"
+                },
+                {
+                    "en": "fundament",
+                    "cn": "基础"
+                },
+                {
+                    "en": "infantry",
+                    "cn": "步兵"
+                },
+                {
+                    "en": "FT",
+                    "cn": "傅里叶变换（=Fourier transform)"
+                },
+                {
+                    "en": "pick",
+                    "cn": "拾"
+                },
+                {
+                    "en": "leg it",
+                    "cn": "徒步"
+                },
+                {
+                    "en": "substructure",
+                    "cn": "底部构造"
+                },
+                {
+                    "en": "understructure",
+                    "cn": "基础"
+                }
+            ]
+        }
+    ],
+    "antonym": [
+        {
+            "v": [
+                {
+                    "en": "head",
+                    "cn": "头部"
+                },
+                {
+                    "en": "horse",
+                    "cn": "马"
+                }
+            ]
+        }
+    ],
+    "xx": {
+        "item": "foot",
+        "body": {
+            "1": {
+                "pos": "名词",
+                "sense": "脚",
+                "audio": {
+                    "1": "http://dc.dfile.cn/v/89942508/0049e43edbf5f81ef07c4d5cb0a6fb2a/xxjb/2/xxjbfoot_1.mp3",
+                    "2": "http://dc.dfile.cn/v/89942508/761b7c4a174d4efdbda3f653cc338e14/xxjb/2/xxjbfoot_2.mp3",
+                    "3": "http://dc.dfile.cn/v/89942509/7bd20d3f5c5efd64f2b58c5ca8b4b42b/xxjb/2/xxjbfoot_3.mp3",
+                    "4": "http://dc.dfile.cn/v/89942509/3e8f5cadb704af7268a11cc81b0e6a57/xxjb/2/xxjbfoot_4.mp3"
+                },
+                "phrase": {
+                    "1": {
+                        "en": "on foot",
+                        "cn": "步行"
+                    }
+                },
+                "sen": {
+                    "pic": "http://dc.dfile.cn/v/89942509/4b7140e7a1fa0ce1ed9179784daa2a6d/xxjb/2/xxjbfoot_1.jpg",
+                    "en": {
+                        "1": "He goes to school on foot."
+                    },
+                    "cn": {
+                        "1": "他走路去上学。"
+                    }
+                },
+                "kt": {
+                    "1": {
+                        "text": "foot是脚的单数，复数形式为feet。"
+                    },
+                    "2": {
+                        "text": "人的身体（body）由多个部分构成，包括头（head）、脖子（neck）、手臂（arm）、腿（leg）、膝盖（knee）、脚（foot）等。",
+                        "pic": "http://dc.dfile.cn/v/89942509/4e40ab4ba79e54a89f1e713ad6de5f09/xxjb/2/xxjbfoot_2.jpg"
+                    }
+                }
+            }
+        }
+    },
+    "chuzhong": {
+        "item": "foot",
+        "rate": {
+            "cloze": "2007(2)|2008(3)|2010(1)|2011(9)|2013(1)|2014(1)",
+            "reading": "2007(1)|2008(19)|2009(8)|2010(3)|2011(2)|2012(5)|2013(9)|2014(4)",
+            "translation": "2013(3)|2014(1)",
+            "danxuan": "2007(1)|2008(2)|2010(2)|2013(1)|2014(1)",
+            "title": "在2007-2014年中考英语中，该词的考频统计如下："
+        },
+        "transform": {
+            "1": {
+                "pos": "npl",
+                "text": "feet"
+            }
+        },
+        "basic": {
+            "1": {
+                "pos": "n.",
+                "sense": "足，脚；英尺",
+                "typical": {
+                    "1": {
+                        "en": "A man has two feet.",
+                        "cn": "人有两只脚。"
+                    },
+                    "2": {
+                        "en": "I missed the target by one foot.",
+                        "cn": "我差一英尺就击中目标。"
+                    }
+                },
+                "zhenti": {
+                    "1": {
+                        "en": "When she finally reached the top, she noticed a dark shape several inches from her left foot.",
+                        "src": "2014年中考英语江苏省扬州卷 阅读理解"
+                    },
+                    "2": {
+                        "en": "To keep healthy, more and more people would go to work on foot.",
+                        "src": "2014年中考英语四川省成都卷 翻译"
+                    }
+                }
+            }
+        },
+        "ss": [
+            "n.足，脚；英尺"
+        ]
+    }
+}`
+
+
+//	fmt.Println(ttt)
+//	var data map[string]interface{}
+	var data entity.Dict
+    if err := json.Unmarshal([]byte(ttt), &data); err != nil {
+//		fmt.Printf("error:%v\n", err.Error())
+		panic(err)
+    }
+	//fmt.Println(data["chuzhong"])
+	fmt.Println(data.Item)
+	fmt.Println(string(data.Chuzhong.Rate.Cloze))
+
+
+
+	b, err := json.Marshal(data.Chuzhong.Rate)
+    if err != nil {
+		panic(err)
+    }
+    fmt.Println(string(b))
+
+	// string to int32
+	base, _ := strconv.ParseInt("2048576", 10, 32) 
+    fmt.Println(base);
+	int32 to hexadecimal
+    a := strconv.FormatInt(base, 16) 
+    fmt.Println(a)
+	// hexadecimal to int
+    b, _ := strconv.ParseInt("0FFFFFF", 16, 32)
+    fmt.Println(b)
+}
+
+
